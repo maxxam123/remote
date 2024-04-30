@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react01-front
+  namespace: max2
+  labels:
+    app: react01-front
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: react01-front
+  template:
+    metadata:
+      labels:
+        app: react01-front
+    spec:
+      containers:
+      - name: react01-front
+        image: nginx
+        ports:
+        - containerPort: 80
